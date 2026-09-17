@@ -12,6 +12,10 @@
     { "id": "trench",      "file": "trench.txt",      "name": "Глубоководный жёлоб" },
     { "id": "shelf",       "file": "shelf.txt",       "name": "Шельф с обрывом" },
     { "id": "islands",     "file": "islands.txt",     "name": "Подводный архипелаг" },
-    { "id": "random_hills","file": "random_hills.txt","name": "Случайный рельеф" }
+    { "id": "random_hills","file": "random_hills.txt","name": "Случайный рельеф" },
+    { "id": "zigzag",      "file": "zigzag.txt",      "name": "Зигзаг" },
+    { "id": "leverb",      "file": "leverb.txt",      "name": "Размытие" },
+    { "id": "resonator",   "file": "resonator.txt",   "name": "Резонатор" },
+	{ "id": "trap",        "file": "trap.txt",        "name": "Ловушка" }
   ]
 }

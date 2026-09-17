@@ -7,8 +7,8 @@ z_max, 1200
 source_x, 0
 source_z, 100
 
-receiver_x, 6500
-receiver_z, 200
+receiver_x, 5500
+receiver_z, 670
 receiver_radius, 50
 
 fan_count, 15

@@ -1,0 +1,32 @@
+name, "Многолучевой волновод"
+description, "Мелководье, большое приёмное окно — многолучевость и длинное эхо"
+
+x_max, 3000
+z_max, 200
+
+source_x, 100
+source_z, 30
+
+receiver_x, 2800
+receiver_z, 120
+receiver_radius, 60
+
+fan_count, 21
+fan_spread, 25
+
+ds, 1.5
+alpha, 0.00001
+eta_bottom, 0.95
+eta_surface, 0.95
+
+[profile]
+0,    1500
+50,   1500
+100,  1500
+150,  1500
+200,  1500
+
+[bottom]
+0,     200
+1500,  195
+3000,  200
