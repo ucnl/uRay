@@ -1,0 +1,148 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  padding: 12px;
+  background: #0a1620; color: #cfe8f5;
+  font-family: Consolas, monospace;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+
+#app { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+
+header {
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.brand { display: flex; gap: 14px; align-items: center; }
+.brand h1 { margin: 0; font-size: 18px; color: #6fe3ff; }
+
+/* Тумблер режимов */
+.mode-toggle {
+  display: inline-flex; border: 1px solid #1c5a72; border-radius: 3px; overflow: hidden;
+}
+.mode-btn {
+  background: #071018; color: #7fb5cc; border: none;
+  padding: 4px 12px; cursor: pointer; font-family: inherit; font-size: 12px;
+  transition: background 0.15s, color 0.15s;
+}
+.mode-btn:hover { background: #0e2a3a; }
+.mode-btn.active { background: #0e6f8a; color: #fff; }
+
+.controls-top { display: flex; gap: 12px; align-items: center; }
+.controls-top label { font-size: 13px; }
+.controls-top select {
+  background: #071018; color: #cfe8f5; border: 1px solid #1c3a4a;
+  padding: 4px 6px; font-family: inherit; font-size: 13px;
+}
+#reset-btn {
+  background: #0e3f52; color: #cfe8f5; border: 1px solid #1c5a72;
+  padding: 4px 12px; cursor: pointer; font-family: inherit; font-size: 13px;
+}
+#reset-btn:hover { background: #16596f; }
+
+#mute-btn {
+  background: #071018; color: #cfe8f5; border: 1px solid #1c5a72;
+  padding: 4px 10px; cursor: pointer; font-family: inherit; font-size: 14px;
+  min-width: 40px;
+}
+#mute-btn:hover { background: #0e2a3a; }
+#mute-btn.muted { color: #5a7a8a; border-color: #1c3a4a; }
+
+@media (max-width: 700px) {
+  #mute-btn { padding: 3px 8px; font-size: 13px; min-width: 34px; }
+}
+
+.sound-mode-btn {
+  background: #071018; color: #7fb5cc; border: 1px solid #1c5a72;
+  padding: 3px 8px; cursor: pointer; font-family: inherit; font-size: 12px;
+  min-width: 56px;
+}
+.sound-mode-btn:hover { background: #0e2a3a; color: #cfe8f5; }
+.sound-mode-btn.active { background: #0e6f8a; color: #fff; border-color: #128aa8; }
+
+@media (max-width: 700px) {
+  .sound-mode-btn { padding: 2px 6px; font-size: 11px; min-width: 46px; }
+}
+
+#status { font-size: 12px; color: #7fb5cc; margin-left: auto; }
+
+/* Панели */
+.panel {
+  background: #071018;
+  border: 1px solid #1c3a4a;
+  position: relative;
+  overflow: hidden;
+}
+.panel canvas { display: block; width: 100%; height: 100%; }
+
+#layout { display: flex; gap: 12px; flex: 1; min-height: 0; }
+.profile-panel { flex: 0 0 220px; }
+.main-col { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
+.scene-panel { flex: 1; min-height: 0; }
+.ir-panel { flex: 0 0 110px; }
+
+.tutorial {
+  position: absolute; left: 50%; top: 30%;
+  transform: translate(-50%, -50%);
+  text-align: center; pointer-events: none;
+  color: #cfe8f5; text-shadow: 0 2px 8px #000;
+  font-size: 16px; opacity: 0.9;
+  transition: opacity 0.4s;
+}
+.tutorial .sub { font-size: 13px; color: #7fb5cc; margin-top: 6px; }
+.tutorial.hidden { opacity: 0; }
+
+#controls {
+  display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  padding-top: 8px;
+}
+.ctrl-group {
+  display: flex; gap: 10px; align-items: center;
+  padding-right: 14px; border-right: 1px solid #1c3a4a;
+}
+.ctrl-group:last-of-type { border-right: none; }
+.ctrl-group.hidden { display: none; }
+.ctrl-label { font-size: 12px; color: #7fb5cc; }
+#controls label { font-size: 13px; }
+#controls input[type=range] { vertical-align: middle; }
+
+.speed-btn {
+  background: #071018; color: #7fb5cc; border: 1px solid #1c5a72;
+  padding: 3px 8px; cursor: pointer; font-family: inherit; font-size: 12px;
+  min-width: 36px;
+}
+.speed-btn:hover { background: #0e2a3a; color: #cfe8f5; }
+.speed-btn.active { background: #0e6f8a; color: #fff; border-color: #128aa8; }
+
+#angle-info { font-size: 12px; color: #7fb5cc; }
+#result { font-size: 13px; margin-left: auto; }
+#result.ok { color: #6fff9a; }
+#result.fail { color: #ff8080; }
+#result.pending { color: #ffd24a; }
+
+/* ---- Мобильная раскладка ---- */
+@media (max-width: 700px) {
+  body { padding: 6px; }
+  header { gap: 8px; margin-bottom: 6px; }
+  .brand { gap: 8px; }
+  .brand h1 { font-size: 15px; }
+  .mode-btn { padding: 3px 8px; font-size: 11px; }
+  .controls-top { gap: 6px; flex-wrap: wrap; }
+  .controls-top label, #reset-btn { font-size: 12px; }
+  #status { font-size: 11px; flex-basis: 100%; margin-left: 0; }
+
+  #layout { flex-direction: column; gap: 6px; }
+  .main-col { order: 1; flex: 1; min-height: 0; gap: 6px; }
+  .profile-panel { order: 2; flex: 0 0 70px; }
+  .scene-panel { flex: 1; min-height: 0; }
+  .ir-panel { flex: 0 0 80px; }
+
+  #controls { gap: 10px; padding-top: 6px; font-size: 12px; }
+  .ctrl-group { padding-right: 8px; gap: 6px; }
+  #controls label { font-size: 12px; }
+  #controls input[type=range] { width: 80px; }
+  .speed-btn { padding: 2px 6px; font-size: 11px; min-width: 30px; }
+  #result { margin-left: 0; flex-basis: 100%; }
+}

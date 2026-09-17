@@ -1,0 +1,35 @@
+name, "Арктика"
+description, "Минимум c у поверхности — приповерхностный канал"
+
+x_max, 6000
+z_max, 1000
+
+source_x, 0
+source_z, 50
+
+receiver_x, 5500
+receiver_z, 500
+receiver_radius, 40
+
+fan_count, 13
+fan_spread, 10
+
+ds, 3
+alpha, 0.00008
+eta_bottom, 0.4
+eta_surface, 0.9
+
+[profile]
+0,    1440
+30,   1438
+60,   1442
+150,  1450
+300,  1460
+500,  1467
+700,  1472
+1000, 1478
+
+[bottom]
+0,    1000
+3000, 980
+6000, 1000

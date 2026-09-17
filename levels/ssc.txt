@@ -1,0 +1,33 @@
+name, "Поверхностный звуковой канал"
+description, "Минимум c у поверхности — лучи прижимаются к ней и бегут вдоль"
+
+x_max, 5000
+z_max, 600
+
+source_x, 0
+source_z, 50
+
+receiver_x, 4000
+receiver_z, 100
+receiver_radius, 40
+
+fan_count, 9
+fan_spread, 8
+
+ds, 3
+alpha, 0.00008
+eta_bottom, 0.3
+eta_surface, 0.9
+
+[profile]
+0,    1500
+50,   1497
+100,  1502
+200,  1512
+350,  1525
+500,  1538
+600,  1545
+
+[bottom]
+0,    600
+5000, 580

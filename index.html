@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>uRay</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="brand">
+      <h1>uRay</h1>
+      <div class="mode-toggle" role="tablist">
+        <button id="mode-explore" class="mode-btn active" data-mode="explore">Explore</button>
+        <button id="mode-game"    class="mode-btn"        data-mode="game">Game</button>
+      </div>
+    </div>
+    <div class="controls-top">
+      <label>Уровень: <select id="level-select"></select></label>
+      <button id="reset-btn" title="Вернуть угол к стартовому">Сброс</button>
+	  <button id="mute-btn" title="Звук">🔊</button>
+    </div>
+    <div id="status">Загрузка…</div>
+  </header>
+
+	<div id="layout">
+	  <div class="panel profile-panel">
+		<canvas id="profile-canvas"></canvas>
+	  </div>
+	  <div class="main-col">
+		<div class="panel scene-panel">
+		  <canvas id="scene-canvas"></canvas>
+		  <div id="tutorial" class="tutorial hidden">
+			<div>Тяни от источника, чтобы прицелиться</div>
+			<div class="sub">Отпусти — звук побежит</div>
+		  </div>
+		</div>
+		<div class="panel ir-panel">
+		  <canvas id="ir-canvas"></canvas>
+		</div>
+	  </div>
+	</div>
+
+  <div id="controls">
+    <div class="ctrl-group" id="grp-fan">
+      <label>Веер: <input type="range" id="spread" min="0" max="20" step="0.5" value="8"><span id="spread-val">8°</span></label>
+      <label>Лучей: <input type="range" id="count" min="1" max="21" step="1" value="9"><span id="count-val">9</span></label>
+    </div>
+    <div class="ctrl-group" id="grp-speed">
+      <span class="ctrl-label">Скорость:</span>
+      <button class="speed-btn" data-speed="1">×1</button>
+      <button class="speed-btn" data-speed="2">×2</button>
+      <button class="speed-btn" data-speed="4">×4</button>
+      <button class="speed-btn active" data-speed="8">×8</button>
+      <button class="speed-btn" data-speed="16">×16</button>
+      <button class="speed-btn" data-speed="64">×64</button>
+      <button class="speed-btn" data-speed="0" title="Мгновенно">∞</button>
+    </div>
+	<div class="ctrl-group" id="grp-sound">
+	  <span class="ctrl-label">Звук:</span>
+	  <button class="sound-mode-btn" data-mode="impulse">Impulse</button>
+	  <button class="sound-mode-btn active" data-mode="ping">Ping</button>
+	</div>
+    <span id="angle-info"></span>
+    <span id="result"></span>
+  </div>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+name, "Шельф с обрывом"
+description, "Резкий свал глубин — за бровкой акустическая тень"
+
+x_max, 8000
+z_max, 2000
+
+source_x, 500
+source_z, 150
+
+receiver_x, 6500
+receiver_z, 1800
+receiver_radius, 60
+
+fan_count, 13
+fan_spread, 14
+
+ds, 4
+alpha, 0.00006
+eta_bottom, 0.5
+eta_surface, 0.8
+
+[profile]
+0,    1545
+200,  1535
+500,  1520
+1000, 1510
+1500, 1505
+2000, 1502
+
+[bottom]
+0,    250
+1500, 250
+2500, 300
+3000, 1500
+3500, 1900
+5000, 1950
+8000, 2000

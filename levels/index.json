@@ -1,0 +1,17 @@
+{
+  "levels": [
+    { "id": "demo1",       "file": "demo1.txt",       "name": "Отрицательный градиент" },
+    { "id": "ssc",         "file": "ssc.txt",         "name": "Поверхностный канал" },
+    { "id": "dsc",         "file": "dsc.txt",         "name": "Подводный звуковой канал" },
+    { "id": "arctic",      "file": "arctic.txt",      "name": "Арктика" },
+    { "id": "thermocline", "file": "thermocline.txt", "name": "Термоклин" },
+    { "id": "coastal",     "file": "coastal.txt",     "name": "Прибрежная зона" },
+    { "id": "shallow",     "file": "shallow.txt",     "name": "Мелкое море" },
+    { "id": "seamount",    "file": "seamount.txt",    "name": "Подводная гора" },
+    { "id": "canyon",      "file": "canyon.txt",      "name": "Каньон" },
+    { "id": "trench",      "file": "trench.txt",      "name": "Глубоководный жёлоб" },
+    { "id": "shelf",       "file": "shelf.txt",       "name": "Шельф с обрывом" },
+    { "id": "islands",     "file": "islands.txt",     "name": "Подводный архипелаг" },
+    { "id": "random_hills","file": "random_hills.txt","name": "Случайный рельеф" }
+  ]
+}

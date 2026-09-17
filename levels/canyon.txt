@@ -1,0 +1,38 @@
+name, "Каньон"
+description, "Узкое ущелье — луч ныряет вниз и отражается от стен"
+
+x_max, 4000
+z_max, 1500
+
+source_x, 200
+source_z, 200
+
+receiver_x, 3600
+receiver_z, 400
+receiver_radius, 40
+
+fan_count, 11
+fan_spread, 10
+
+ds, 3
+alpha, 0.00008
+eta_bottom, 0.7
+eta_surface, 0.85
+
+[profile]
+0,    1540
+300,  1530
+700,  1515
+1100, 1505
+1500, 1500
+
+[bottom]
+0,     400
+300,   500
+800,   900
+1500,  1400
+2000,  1450
+2500,  1400
+3200,  900
+3700,  500
+4000,  400

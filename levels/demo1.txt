@@ -1,0 +1,33 @@
+# uRayTracer level — базовый, отрицательный градиент
+name, "Отрицательный градиент"
+description, "Классика: скорость звука падает с глубиной, луч загибает вниз"
+
+x_max, 5000
+z_max, 1000
+
+source_x, 0
+source_z, 100
+
+receiver_x, 4000
+receiver_z, 800
+receiver_radius, 40
+
+fan_count, 9
+fan_spread, 8
+
+ds, 3
+alpha, 0.00008
+eta_bottom, 0.4
+eta_surface, 0.8
+
+[profile]
+0,    1540
+200,  1530
+500,  1515
+800,  1505
+1000, 1502
+
+[bottom]
+0,    1000
+2500, 950
+5000, 1000

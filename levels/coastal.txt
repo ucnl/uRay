@@ -1,0 +1,36 @@
+name, "Прибрежная зона"
+description, "Речной сток: скачок c(z) в слое 30–60 м, пресная вода сверху"
+
+x_max, 4000
+z_max, 400
+
+source_x, 300
+source_z, 20
+
+receiver_x, 3800
+receiver_z, 300
+receiver_radius, 30
+
+fan_count, 13
+fan_spread, 12
+
+ds, 2
+alpha, 0.0001
+eta_bottom, 0.5
+eta_surface, 0.85
+
+[profile]
+0,    1480
+30,   1482
+45,   1495
+60,   1512
+120,  1518
+250,  1522
+400,  1525
+
+[bottom]
+0,    150
+1000, 200
+2000, 250
+3000, 350
+4000, 400

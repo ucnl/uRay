@@ -1,0 +1,35 @@
+name, "Подводный звуковой канал (ПЗК)"
+description, "Минимум c на ~800 м — лучи каналируются около оси"
+
+x_max, 8000
+z_max, 1600
+
+source_x, 0
+source_z, 800
+
+receiver_x, 7000
+receiver_z, 800
+receiver_radius, 60
+
+fan_count, 11
+fan_spread, 10
+
+ds, 4
+alpha, 0.00006
+eta_bottom, 0.3
+eta_surface, 0.7
+
+[profile]
+0,    1545
+200,  1530
+500,  1515
+700,  1508
+800,  1505
+900,  1508
+1200, 1518
+1600, 1532
+
+[bottom]
+0,    1600
+4000, 1580
+8000, 1600

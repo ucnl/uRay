@@ -1,0 +1,31 @@
+name, "Мелкое море"
+description, "Глубина 120 м — лучи мечутся между поверхностью и дном"
+
+x_max, 3000
+z_max, 120
+
+source_x, 100
+source_z, 40
+
+receiver_x, 2700
+receiver_z, 60
+receiver_radius, 25
+
+fan_count, 13
+fan_spread, 12
+
+ds, 1.5
+alpha, 0.0002
+eta_bottom, 0.55
+eta_surface, 0.75
+
+[profile]
+0,    1520
+30,   1515
+60,   1510
+90,   1508
+120,  1507
+
+[bottom]
+0,    120
+3000, 120

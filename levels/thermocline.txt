@@ -1,0 +1,38 @@
+name, "Термоклин"
+description, "Резкий скачок c(z) в слое 100–150 м — лучи ломаются и отражаются"
+
+x_max, 6000
+z_max, 800
+
+source_x, 0
+source_z, 80
+
+receiver_x, 5500
+receiver_z, 700
+receiver_radius, 40
+
+fan_count, 13
+fan_spread, 12
+
+ds, 2.5
+alpha, 0.00008
+eta_bottom, 0.5
+eta_surface, 0.8
+
+[profile]
+0,    1530
+50,   1528
+100,  1525
+120,  1520
+130,  1500
+140,  1490
+150,  1505
+200,  1515
+300,  1520
+500,  1525
+800,  1530
+
+[bottom]
+0,    800
+3000, 780
+6000, 800
