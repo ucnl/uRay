@@ -166,6 +166,7 @@ async function loadLevel(file) {
   showTutorialIfNeeded();
   showLevelIntro();
   applyMode();
+  updateAchiCounter();
   refreshScene();
 }
 

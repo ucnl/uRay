@@ -34,5 +34,6 @@ message, "Многократные отражения в мелкой воде"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
-bounce10,  Луч с 10 отражениями,        maxHitBounces, 10
+bounce1,   Луч с отражением,            maxHitBounces, 1
+bounce2,   Луч с 2 отражениями,         maxHitBounces, 2
+strong,    ΣE > 0.3,                    totalEnergy, 0.3
