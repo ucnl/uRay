@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.6
 eta_surface, 0.85
 
+message, "Огибая банки"
+
 [profile]
 0,    1540
 300,  1530
@@ -40,3 +42,8 @@ eta_surface, 0.85
 5000, 1100
 6000, 1150
 7000, 1200
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+detour,    Луч с 3 отражениями,         maxHitBounces, 3
+wide,      Эхо более 300 мс,            echoSpanMs, 300

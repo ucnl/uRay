@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.7
 eta_surface, 0.85
 
+message, "Эхо каньона"
+
 [profile]
 0,    1540
 300,  1530
@@ -36,3 +38,8 @@ eta_surface, 0.85
 3200,  900
 3700,  500
 4000,  400
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
+echo,      Эхо более 300 мс,            echoSpanMs, 300

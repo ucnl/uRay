@@ -19,6 +19,8 @@ alpha, 0.0001
 eta_bottom, 0.5
 eta_surface, 0.85
 
+message, "Речной сток и галоклин"
+
 [profile]
 0,    1480
 30,   1482
@@ -34,3 +36,8 @@ eta_surface, 0.85
 2000, 250
 3000, 350
 4000, 400
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
+echo,      Эхо более 200 мс,            echoSpanMs, 200

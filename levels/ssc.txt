@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.3
 eta_surface, 0.9
 
+message, "Луч прижимается к поверхности"
+
 [profile]
 0,    1500
 50,   1497
@@ -31,3 +33,8 @@ eta_surface, 0.9
 [bottom]
 0,    600
 5000, 580
+
+[achievements]
+hit,      Коснуться приёмника,          anyHit
+surface,  Без отражений от дна,         noBounces
+smooth,   Эхо менее 50 мс,              echoSpanMs, 1

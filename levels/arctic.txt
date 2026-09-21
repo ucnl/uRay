@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.4
 eta_surface, 0.9
 
+message, "Приповерхностный канал"
+
 [profile]
 0,    1440
 30,   1438
@@ -33,3 +35,8 @@ eta_surface, 0.9
 0,    1000
 3000, 980
 6000, 1000
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+surface,   Без отражений от дна,        noBounces
+long,      Эхо более 300 мс,            echoSpanMs, 300

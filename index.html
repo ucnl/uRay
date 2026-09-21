@@ -4,8 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <title>uRay</title>
-<link rel="icon" href="data:,">
+<link rel="icon" href="icons/icon-192.png">
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#071018">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="uRay">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 <div id="app">
@@ -21,8 +27,10 @@
       <label>Уровень: <select id="level-select"></select></label>
       <button id="reset-btn" title="Вернуть угол к стартовому">Сброс</button>
 	  <button id="mute-btn" title="Звук">🔊</button>
+	  <button id="install-btn" style="display:none">Установить</button>
     </div>
     <div id="status">Загрузка…</div>
+	<button id="achi-counter" title="Достижения уровня">★ 0/0</button>
   </header>
 
 	<div id="layout">
@@ -33,6 +41,7 @@
 		<div class="panel scene-panel">
 		  <canvas id="scene-canvas"></canvas>
 		  <div id="tutorial" class="tutorial hidden">
+		  <div id="level-intro" class="level-intro hidden"></div>
 			<div>Тяни от источника, чтобы прицелиться</div>
 			<div class="sub">Отпусти — звук побежит</div>
 		  </div>
@@ -65,6 +74,22 @@
 	</div>
     <span id="angle-info"></span>
     <span id="result"></span>
+  </div>
+</div>
+<div id="toast-container"></div>
+<div id="achi-modal" class="modal hidden">
+  <div class="modal-content">
+	<div class="modal-header">
+	  <div>
+		<span id="achi-modal-title">Достижения</span>
+		<div id="achi-modal-sub"></div>
+	  </div>
+	  <button id="achi-modal-close">×</button>
+	</div>
+    <ul id="achi-list"></ul>
+    <div class="modal-footer">
+      <button id="achi-reset" title="Сбросить весь прогресс">Сбросить прогресс</button>
+    </div>
   </div>
 </div>
 <script type="module" src="main.js"></script>

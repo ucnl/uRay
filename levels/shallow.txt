@@ -19,6 +19,8 @@ alpha, 0.0002
 eta_bottom, 0.55
 eta_surface, 0.75
 
+message, "Многократные отражения в мелкой воде"
+
 [profile]
 0,    1520
 30,   1515
@@ -29,3 +31,8 @@ eta_surface, 0.75
 [bottom]
 0,    120
 3000, 120
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
+bounce10,  Луч с 10 отражениями,        maxHitBounces, 10

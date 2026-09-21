@@ -19,6 +19,8 @@ alpha, 0.00001
 eta_bottom, 0.95
 eta_surface, 0.95
 
+message, "Богатая многолучевость"
+
 [profile]
 0,    1500
 50,   1500
@@ -30,3 +32,9 @@ eta_surface, 0.95
 0,     200
 1500,  195
 3000,  200
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+rich,      5+ попаданий,                hitsCount, 5
+echo,      Эхо более 300 мс,            echoSpanMs, 300
+spread,    Разброс энергий > 10×,       energySpread, 10

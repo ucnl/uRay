@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.5
 eta_surface, 0.8
 
+message, "Через пропасть"
+
 [profile]
 0,    1545
 300,  1535
@@ -37,3 +39,8 @@ eta_surface, 0.8
 4200, 1200
 4600, 500
 5000, 400
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
+strong,    ΣE > 0.3,                    totalEnergy, 0.3

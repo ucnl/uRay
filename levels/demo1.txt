@@ -20,6 +20,9 @@ alpha, 0.00008
 eta_bottom, 0.4
 eta_surface, 0.8
 
+message, "Классика: скорость звука падает с глубиной"
+
+
 [profile]
 0,    1540
 200,  1530
@@ -31,3 +34,8 @@ eta_surface, 0.8
 0,    1000
 2500, 950
 5000, 1000
+
+[achievements]
+hit,      Коснуться приёмника,          anyHit
+bounce3,  Луч с 3 отражениями,          maxHitBounces, 3
+deep,     Попасть после отражения от дна, maxHitBounces, 1

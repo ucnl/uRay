@@ -19,6 +19,8 @@ alpha, 0.000003
 eta_bottom, 0.95
 eta_surface, 0.97
 
+message, "Найди путь сквозь щель"
+
 [profile]
 0,    1500
 100,  1500
@@ -45,3 +47,9 @@ eta_surface, 0.97
 1500,  300
 3000,  300
 6000,  300
+
+[achievements]
+hit,      Попасть в приёмник,          anyHit
+echo,     Эхо более 300 мс,            echoSpanMs, 300
+bounce5,  Луч с 5 отражениями,         maxHitBounces, 5
+bounce10, Луч с 10 отражениями,        maxHitBounces, 10

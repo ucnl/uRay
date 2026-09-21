@@ -13,6 +13,8 @@ export function parseLevel(text) {
     receiver: { x: 4500, z: 500, radius: 30 },
     profile: [],   // [{z, c}]
     bottom: [],    // [{x, z}]
+	achievements: [],
+	message: '',
     // параметры физики (можно переопределить в уровне)
     physics: {
       ds: 2.0,            // шаг интегрирования, м
@@ -51,6 +53,15 @@ export function parseLevel(text) {
       if (Number.isFinite(x) && Number.isFinite(z)) level.bottom.push({ x, z });
       continue;
     }
+	if (section === 'achievements') {
+	  const parts = line.split(',').map(s => s.trim());
+	  if (parts.length >= 3) {
+		const [id, text, check, valStr] = parts;
+		const value = valStr !== undefined ? parseFloat(valStr) : undefined;
+		level.achievements.push({ id, text, check, value });
+	  }
+	  continue;
+	}
 
     // Вне секции — key, value
     const idx = line.indexOf(',');
@@ -74,6 +85,7 @@ export function parseLevel(text) {
       case 'eta_surface':  level.physics.etaSurface = parseFloat(val); break;
       case 'fan_count':    level.fan.count = parseInt(val, 10); break;
       case 'fan_spread':   level.fan.spread = parseFloat(val); break;
+	  case 'message':      level.message = val; break;
     }
   }
 

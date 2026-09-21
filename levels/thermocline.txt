@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.5
 eta_surface, 0.8
 
+message, "Резкий скачок скорости звука"
+
 [profile]
 0,    1530
 50,   1528
@@ -36,3 +38,8 @@ eta_surface, 0.8
 0,    800
 3000, 780
 6000, 800
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+reflect,   Луч с 2 отражениями,         maxHitBounces, 2
+sharp,     Эхо менее 100 мс,            echoLessMs, 100

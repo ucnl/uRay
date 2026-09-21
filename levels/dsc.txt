@@ -19,6 +19,8 @@ alpha, 0.00006
 eta_bottom, 0.3
 eta_surface, 0.7
 
+message, "Ось подводного звукового канала"
+
 [profile]
 0,    1545
 200,  1530
@@ -33,3 +35,8 @@ eta_surface, 0.7
 0,    1600
 4000, 1580
 8000, 1600
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+straight,  Без отражений от границ,     noBounces
+long,      Эхо более 200 мс,            echoSpanMs, 200

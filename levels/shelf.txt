@@ -19,6 +19,8 @@ alpha, 0.00006
 eta_bottom, 0.5
 eta_surface, 0.8
 
+message, "Акустическая тень за бровкой"
+
 [profile]
 0,    1545
 200,  1535
@@ -35,3 +37,8 @@ eta_surface, 0.8
 3500, 1900
 5000, 1950
 8000, 2000
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+rich,      3+ попаданий,                hitsCount, 3
+echo,      Эхо более 500 мс,            echoSpanMs, 500

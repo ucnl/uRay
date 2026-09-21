@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.6
 eta_surface, 0.85
 
+message, "Отражения от наклонного дна"
+
 [profile]
 0,    1540
 300,  1530
@@ -36,3 +38,8 @@ eta_surface, 0.85
 4000, 900
 5000, 1150
 6000, 1200
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+shadow,    Попасть в тени горы,         maxHitBounces, 1
+bounce5,   Луч с 5 отражениями,         maxHitBounces, 5

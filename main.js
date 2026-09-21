@@ -5,6 +5,7 @@ import { shootFan } from './fan.js';
 import { buildIR } from './impulse-response.js';
 import { SonarAudio } from './audio.js';
 import { renderProfile, renderScene, renderIR } from './render.js';
+import { evaluateAchievements, loadUnlocked, saveUnlocked } from './achievements.js';
 
 import { attachInput } from './input.js';
 
@@ -26,6 +27,12 @@ const grpFan = document.getElementById('grp-fan');
 const irCnv = document.getElementById('ir-canvas');
 const muteBtn = document.getElementById('mute-btn');
 
+const achiModal      = document.getElementById('achi-modal');
+const achiModalTitle = document.getElementById('achi-modal-title');
+const achiList       = document.getElementById('achi-list');
+const achiModalClose = document.getElementById('achi-modal-close');
+const achiResetBtn   = document.getElementById('achi-reset');
+
 const sonar = new SonarAudio();
 
 const TUTORIAL_KEY   = 'uraytracer_tutorial_shown';
@@ -36,6 +43,7 @@ const SOUND_MODE_KEY = 'uraytracer_sound_mode';
 
 // --- Состояние ---
 let level, profile, bottom;
+const levelIdByFile = {};
 let lastFan = null;
 let currentAngle = 0;
 let startAngle = 0;
@@ -50,6 +58,11 @@ let resultHitFlag = false;
 let mode = localStorage.getItem(MODE_KEY) || 'explore';        // 'explore' | 'game'
 let speedup = parseInt(localStorage.getItem(SPEED_KEY) || '8', 10);   // 0 = мгновенно
 let soundMode = localStorage.getItem(SOUND_MODE_KEY) || 'ping';
+
+let unlocked = loadUnlocked();
+const toastCnv = document.getElementById('toast-container');
+const achiCounter = document.getElementById('achi-counter');
+const levelIntroEl = document.getElementById('level-intro');
 
 
 
@@ -67,15 +80,58 @@ let lastIR = null;
 let muted = localStorage.getItem(MUTE_KEY) === '1';
 let soundMarkerRAF = null;
 
+function showLevelIntro() {
+  if (!level.message) return;
+  levelIntroEl.textContent = level.message;
+  levelIntroEl.classList.remove('hidden');
+  clearTimeout(showLevelIntro._t);
+  showLevelIntro._t = setTimeout(() => {
+    levelIntroEl.classList.add('hidden');
+  }, 3500);
+}
+
+function openAchiModal() {
+  if (!level || !level.achievements) return;
+  achiModalTitle.textContent = `Достижения · ${level.name}`;
+  document.getElementById('achi-modal-sub').textContent = level.message || '';
+  achiList.innerHTML = '';
+  for (const a of level.achievements) {
+    const key = `${level.id}:${a.id}`;
+    const got = !!unlocked[key];
+    const li = document.createElement('li');
+    li.className = got ? 'unlocked' : 'locked';
+    li.innerHTML = `<span class="mark">${got ? '★' : '☆'}</span><span>${a.text}</span>`;
+    achiList.appendChild(li);
+  }
+  achiModal.classList.remove('hidden');
+}
+
+function closeAchiModal() {
+  achiModal.classList.add('hidden');
+}
+
+achiCounter.addEventListener('click', openAchiModal);
+achiModalClose.addEventListener('click', closeAchiModal);
+achiModal.addEventListener('click', (e) => {
+  if (e.target === achiModal) closeAchiModal();
+});
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !achiModal.classList.contains('hidden')) {
+    closeAchiModal();
+  }
+});
+
 // ---------- Загрузка ----------
 async function loadIndex() {
   const idx = await fetch('levels/index.json').then(r => r.json());
+  const levelIdByFile = {};
   levelSel.innerHTML = '';
   for (const l of idx.levels) {
     const opt = document.createElement('option');
     opt.value = l.file;
     opt.textContent = l.name;
     levelSel.appendChild(opt);
+	levelIdByFile[l.file] = l.id;
   }
 }
 
@@ -85,15 +141,16 @@ async function loadLevel(file) {
   level = parseLevel(text);
   profile = new SoundProfile(level.profile, 0.1);
   bottom = new Bottom(level.bottom);
-
+  level.id = levelIdByFile[file] || file;
+  
   countIn.value = level.fan.count;
   countVal.textContent = level.fan.count;
   spreadIn.value = level.fan.spread;
   spreadVal.textContent = level.fan.spread + '°';
 
   statusEl.textContent =
-    `${level.name} · c(0)=${profile.c(0).toFixed(1)} м/с · ` +
-    `глубина ${level.zMax} м · X до ${level.xMax} м`;
+  `${level.name} · c(0)=${profile.c(0).toFixed(1)} м/с · ` +
+  `глубина ${level.zMax} м · X до ${level.xMax} м`;
 
   lastFan = null;
   lastIR = null;
@@ -105,7 +162,9 @@ async function loadLevel(file) {
 
   stopSound();
   resize();
+  
   showTutorialIfNeeded();
+  showLevelIntro();
   applyMode();
   refreshScene();
 }
@@ -174,6 +233,58 @@ function resize() {
     cnv.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 }
+
+
+function checkAchievements() {
+  if (!level || !lastFan) return;
+  const results = evaluateAchievements(level, lastFan);
+  const newly = [];
+  for (const a of results) {
+    if (a.unlocked) {
+      const key = `${level.id || level.name}:${a.id}`;
+      if (!unlocked[key]) {
+        unlocked[key] = true;
+        newly.push(a);
+      }
+    }
+  }
+  if (newly.length) {
+    saveUnlocked(unlocked);
+    for (const a of newly) showToast(a.text);
+  }
+  updateAchiCounter();
+}
+
+function updateAchiCounter() {
+  if (!level || !level.achievements || !level.achievements.length) {
+    achiCounter.textContent = '★ 0/0';
+    achiCounter.disabled = true;
+    return;
+  }
+  achiCounter.disabled = false;
+  const total = level.achievements.length;
+  let got = 0;
+  for (const a of level.achievements) {
+    if (unlocked[`${level.id}:${a.id}`]) got++;
+  }
+  achiCounter.textContent = `★ ${got}/${total}`;
+}
+
+function showToast(text) {
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = '★ ' + text;
+  toastCnv.appendChild(el);
+  setTimeout(() => el.classList.add('visible'), 10);
+  setTimeout(() => {
+    el.classList.remove('visible');
+    setTimeout(() => el.remove(), 400);
+  }, 3200);
+}
+
+
+
+
 
 // ---------- Рендер ----------
 function redraw(elapsed = Infinity, fanToDraw = null, irMarkerT = null) {
@@ -272,6 +383,7 @@ function startAnimation() {
     resultHitFlag = !!lastFan.anyHit;
     redraw(Infinity);
     showResult();
+	checkAchievements();
 	startFade();
     return;
   }
@@ -300,6 +412,7 @@ function tick(now) {
     resultHitFlag = !!lastFan.anyHit;
     redraw(Infinity);
     showResult();
+	checkAchievements();
 	startFade();
     return;
   }
@@ -459,6 +572,13 @@ document.querySelectorAll('.sound-mode-btn').forEach(btn => {
 
 
 // ---------- События UI ----------
+achiResetBtn.addEventListener('click', () => {
+  if (!confirm('Сбросить весь прогресс достижений?')) return;
+  unlocked = {};
+  saveUnlocked(unlocked);
+  updateAchiCounter();
+  if (!achiModal.classList.contains('hidden')) openAchiModal();
+});
 spreadIn.addEventListener('input', () => {
   spreadVal.textContent = spreadIn.value + '°';
   previewShoot();
@@ -555,3 +675,38 @@ loadIndex()
     statusEl.textContent = 'Ошибка: ' + e.message;
     console.error(e);
   });
+  
+  // ---------- PWA ----------
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch((e) => {
+      console.warn('SW registration failed:', e);
+    });
+  });
+}
+
+// Install prompt
+let deferredInstall = null;
+const installBtn = document.getElementById('install-btn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstall = e;
+  if (installBtn) installBtn.style.display = '';
+});
+
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (!deferredInstall) return;
+    deferredInstall.prompt();
+    const { outcome } = await deferredInstall.userChoice;
+    deferredInstall = null;
+    installBtn.style.display = 'none';
+    console.log('Install:', outcome);
+  });
+
+  window.addEventListener('appinstalled', () => {
+    installBtn.style.display = 'none';
+    deferredInstall = null;
+  });
+}

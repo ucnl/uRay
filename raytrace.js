@@ -9,6 +9,7 @@ export function traceRay(level, profile, bottom, z0, theta0) {
   const P = level.physics;
   const ds = P.ds;
   const sMax = (level.xMax + level.zMax) * 3;
+  let hitBounces = 0;
 
   let x = level.source.x;
   let z = z0;
@@ -87,6 +88,7 @@ export function traceRay(level, profile, bottom, z0, theta0) {
         hitTime = t;
         hitX = x;
         hitZ = z;
+		hitBounces = bounces;
       }
     }
 
@@ -99,6 +101,7 @@ export function traceRay(level, profile, bottom, z0, theta0) {
   return {
     points: pts,
     hit, hitEnergy, hitTime, hitX, hitZ,
+	hitBounces,
     bounces,
     pathLength: s,
     tMax: t,

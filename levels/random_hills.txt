@@ -19,6 +19,8 @@ alpha, 0.00008
 eta_bottom, 0.65
 eta_surface, 0.85
 
+message, "В хаосе холмов"
+
 [profile]
 0,    1540
 300,  1530
@@ -43,3 +45,8 @@ eta_surface, 0.85
 6300, 700
 6800, 1050
 7000, 1100
+
+[achievements]
+hit,       Коснуться приёмника,         anyHit
+detour,    Луч с 3 отражениями,         maxHitBounces, 3
+spread,    Разброс энергий > 10×,       energySpread, 10
