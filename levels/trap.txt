@@ -4,7 +4,7 @@ description, "Приёмник внутри резонатора — самая 
 x_max, 6000
 z_max, 400
 
-source_x, 900
+source_x, 950
 source_z, 200
 
 receiver_x, 1300
@@ -51,7 +51,7 @@ message, "Резонатор, приёмник внутри"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-rich,      15+ попаданий,               hitsCount, 15
-bounce6,   Луч с 6 отражениями,         maxHitBounces, 6
-echo,      Эхо более 800 мс,            echoSpanMs, 800
+rich,      16+ попаданий,               hitsCount, 16
+bounce8,   Луч с 8 отражениями,         maxHitBounces, 8
+echo,      Эхо более 1100 мс,            echoSpanMs, 1100
 strong,    ΣE > 8,                      totalEnergy, 8
