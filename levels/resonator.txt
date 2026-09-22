@@ -49,7 +49,8 @@ message, "Найди путь сквозь щель"
 6000,  300
 
 [achievements]
-hit,      Попасть в приёмник,          anyHit
-echo,     Эхо более 300 мс,            echoSpanMs, 300
-bounce5,  Луч с 5 отражениями,         maxHitBounces, 5
-bounce10, Луч с 10 отражениями,        maxHitBounces, 10
+hit,       Коснуться приёмника,         anyHit
+bounce10,  Луч с 10 отражениями,        maxHitBounces, 10
+bounce20,  Луч с 20 отражениями,        maxHitBounces, 20
+echo,      Эхо более 2000 мс,           echoSpanMs, 2000
+spread,    Разброс энергий > 10×,       energySpread, 10

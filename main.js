@@ -38,6 +38,7 @@ const achiModalTitle = document.getElementById('achi-modal-title');
 const achiList       = document.getElementById('achi-list');
 const achiModalClose = document.getElementById('achi-modal-close');
 const achiResetBtn   = document.getElementById('achi-reset');
+const totalAchiCounter = document.getElementById('total-achi-counter');
 
 const versionEl = document.getElementById('app-version');
 if (versionEl) versionEl.textContent = 'v' + APP_VERSION;
@@ -71,6 +72,7 @@ if (![1, 2, 4, 8, 16, 64].includes(speedup)) speedup = 8;
 let soundMode = localStorage.getItem(SOUND_MODE_KEY) || 'ping';
 
 let unlocked = loadUnlocked();
+let totalAchievementsCount = 0;
 const toastCnv = document.getElementById('toast-container');
 const achiCounter = document.getElementById('achi-counter');
 const levelIntroEl = document.getElementById('level-intro');
@@ -144,6 +146,18 @@ async function loadIndex() {
     levelSel.appendChild(opt);
 	levelIdByFile[l.file] = l.id;
   }
+  
+  await Promise.all(idx.levels.map(async (l) => {
+	  try {
+		const text = await fetch('levels/' + l.file).then(r => r.text());
+		const parsed = parseLevel(text);
+		totalAchievementsCount += (parsed.achievements || []).length;
+	  } catch (e) {
+		console.warn('Failed to preload level for count:', l.file, e);
+	  }
+	}));
+
+updateTotalAchiCounter();
 }
 
 async function loadLevel(file) {
@@ -191,6 +205,15 @@ function hideTutorial() {
     tutorialEl.classList.add('hidden');
     localStorage.setItem(TUTORIAL_KEY, '1');
   }
+}
+
+function countUnlocked() {
+  return Object.keys(unlocked).filter(k => unlocked[k]).length;
+}
+
+function updateTotalAchiCounter() {
+  if (!totalAchiCounter) return;
+  totalAchiCounter.textContent = `★ ${countUnlocked()}/${totalAchievementsCount}`;
 }
 
 // ---------- Звук ------------

@@ -42,5 +42,5 @@ message, "Через пропасть"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
-strong,    ΣE > 0.3,                    totalEnergy, 0.3
+bounce4,   Луч с 4 отражениями,         maxHitBounces, 4
+strong,    ΣE > 0.8,                    totalEnergy, 0.8

@@ -39,5 +39,4 @@ message, "Речной сток и галоклин"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
-echo,      Эхо более 200 мс,            echoSpanMs, 200
+bounce2,   Луч с 2 отражениями,         maxHitBounces, 2

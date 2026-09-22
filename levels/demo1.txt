@@ -36,6 +36,7 @@ message, "Классика: скорость звука падает с глуб
 5000, 1000
 
 [achievements]
-hit,      Коснуться приёмника,          anyHit
-bounce3,  Луч с 3 отражениями,          maxHitBounces, 3
-deep,     Попасть после отражения от дна, maxHitBounces, 1
+hit,       Коснуться приёмника,         anyHit
+bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
+echo,      Эхо более 120 мс,            echoSpanMs, 120
+spread,    Разброс энергий > 15×,       energySpread, 15

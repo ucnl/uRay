@@ -40,5 +40,5 @@ message, "Акустическая тень за бровкой"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-rich,      3+ попаданий,                hitsCount, 3
-echo,      Эхо более 500 мс,            echoSpanMs, 500
+bounce4,   Луч с 4 отражениями,         maxHitBounces, 4
+spread,    Разброс энергий > 7×,        energySpread, 7

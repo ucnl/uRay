@@ -1,4 +1,4 @@
-name, "Многолучевой волновод"
+name, "Размытие"
 description, "Мелководье, большое приёмное окно — многолучевость и длинное эхо"
 
 x_max, 3000
@@ -35,6 +35,8 @@ message, "Богатая многолучевость"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-rich,      5+ попаданий,                hitsCount, 5
-echo,      Эхо более 300 мс,            echoSpanMs, 300
-spread,    Разброс энергий > 10×,       energySpread, 10
+rich,      15+ попаданий,               hitsCount, 15
+bounce10,  Луч с 10 отражениями,        maxHitBounces, 10
+bounce15,  Луч с 15 отражениями,        maxHitBounces, 15
+echo,      Эхо более 700 мс,            echoSpanMs, 700
+spread,    Разброс энергий > 50×,       energySpread, 50

@@ -41,5 +41,4 @@ message, "Отражения от наклонного дна"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-shadow,    Попасть в тени горы,         maxHitBounces, 1
-bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
+bounce1,   Отражение от склона горы,    maxHitBounces, 1

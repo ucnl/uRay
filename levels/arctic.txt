@@ -39,4 +39,5 @@ message, "Приповерхностный канал"
 [achievements]
 hit,       Коснуться приёмника,         anyHit
 surface,   Без отражений от дна,        noBounces
-long,      Эхо более 300 мс,            echoSpanMs, 300
+bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
+echo,      Эхо более 300 мс,            echoSpanMs, 300

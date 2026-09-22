@@ -41,5 +41,6 @@ message, "Резкий скачок скорости звука"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-reflect,   Луч с 2 отражениями,         maxHitBounces, 2
-sharp,     Эхо менее 100 мс,            echoLessMs, 100
+bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
+echo,      Эхо более 200 мс,            echoSpanMs, 200
+spread,    Разброс энергий > 25×,       energySpread, 25

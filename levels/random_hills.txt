@@ -48,5 +48,5 @@ message, "В хаосе холмов"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-detour,    Луч с 3 отражениями,         maxHitBounces, 3
-spread,    Разброс энергий > 10×,       energySpread, 10
+bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
+spread,    Разброс энергий > 5×,        energySpread, 5

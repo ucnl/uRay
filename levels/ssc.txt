@@ -35,6 +35,7 @@ message, "Луч прижимается к поверхности"
 5000, 580
 
 [achievements]
-hit,      Коснуться приёмника,          anyHit
-surface,  Без отражений от дна,         noBounces
-smooth,   Эхо менее 50 мс,              echoSpanMs, 1
+hit,       Коснуться приёмника,         anyHit
+surface,   Без отражений от дна,        noBounces
+smooth,    Эхо менее 40 мс,             echoLessMs, 40
+strong,    ΣE > 1.0,                    totalEnergy, 1.0

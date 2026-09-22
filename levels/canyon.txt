@@ -42,4 +42,5 @@ message, "Эхо каньона"
 [achievements]
 hit,       Коснуться приёмника,         anyHit
 bounce5,   Луч с 5 отражениями,         maxHitBounces, 5
-echo,      Эхо более 300 мс,            echoSpanMs, 300
+echo,      Эхо более 3000 мс,           echoSpanMs, 3000
+spread,    Разброс энергий > 15×,       energySpread, 15

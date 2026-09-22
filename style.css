@@ -280,3 +280,11 @@ header {
 @media (max-width: 700px) {
   #footer { font-size: 10px; padding-top: 6px; }
 }
+
+#total-achi-counter {
+  color: #ffd24a; font-size: 11px; white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  #total-achi-counter { font-size: 10px; }
+}

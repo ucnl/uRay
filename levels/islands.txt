@@ -45,5 +45,6 @@ message, "Огибая банки"
 
 [achievements]
 hit,       Коснуться приёмника,         anyHit
-detour,    Луч с 3 отражениями,         maxHitBounces, 3
-wide,      Эхо более 300 мс,            echoSpanMs, 300
+bounce3,   Луч с 3 отражениями,         maxHitBounces, 3
+echo,      Эхо более 300 мс,            echoSpanMs, 300
+spread,    Разброс энергий > 10×,       energySpread, 10

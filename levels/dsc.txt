@@ -39,4 +39,5 @@ message, "Ось подводного звукового канала"
 [achievements]
 hit,       Коснуться приёмника,         anyHit
 straight,  Без отражений от границ,     noBounces
-long,      Эхо более 200 мс,            echoSpanMs, 200
+rich,      5+ попаданий,                hitsCount, 5
+strong,    ΣE > 2.5,                    totalEnergy, 2.5

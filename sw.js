@@ -4,7 +4,7 @@
 //   - Уровни (levels/*.txt, levels/index.json) — network-first, fallback на кэш
 //   - Всё остальное — network, fallback на кэш
 
-const VERSION = 'uray-v1';
+const VERSION = 'uray-v2';
 
 const SHELL = [
   './',
