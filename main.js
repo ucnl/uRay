@@ -9,6 +9,12 @@ import { evaluateAchievements, loadUnlocked, saveUnlocked } from './achievements
 
 import { attachInput } from './input.js';
 
+const APP_VERSION = '0.5.0';
+const REPO_URL = 'https://github.com/ucnl/uRay';
+const CHANGELOG_URL = 'https://github.com/ucnl/uRay/blob/main/CHANGELOG.md';
+
+
+
 const statusEl   = document.getElementById('status');
 const resultEl   = document.getElementById('result');
 const spreadIn   = document.getElementById('spread');
@@ -32,6 +38,9 @@ const achiModalTitle = document.getElementById('achi-modal-title');
 const achiList       = document.getElementById('achi-list');
 const achiModalClose = document.getElementById('achi-modal-close');
 const achiResetBtn   = document.getElementById('achi-reset');
+
+const versionEl = document.getElementById('app-version');
+if (versionEl) versionEl.textContent = 'v' + APP_VERSION;
 
 const sonar = new SonarAudio();
 
@@ -57,6 +66,8 @@ let resultHitFlag = false;
 
 let mode = localStorage.getItem(MODE_KEY) || 'explore';        // 'explore' | 'game'
 let speedup = parseInt(localStorage.getItem(SPEED_KEY) || '8', 10);   // 0 = мгновенно
+if (![1, 2, 4, 8, 16, 64].includes(speedup)) speedup = 8;
+
 let soundMode = localStorage.getItem(SOUND_MODE_KEY) || 'ping';
 
 let unlocked = loadUnlocked();
@@ -375,19 +386,6 @@ function refreshScene() {
 function startAnimation() {
   if (!lastFan) return;
   cancelAnimationFrame(animHandle);
-
-  if (speedup === 0) {
-    // мгновенный режим
-    animRunning = false;
-    currentGameT = lastFan.tMax;
-    gameReveal = true;
-    resultHitFlag = !!lastFan.anyHit;
-    redraw(Infinity);
-    showResult();
-	checkAchievements();
-	startFade();
-    return;
-  }
 
   animStart = performance.now();
   animRunning = true;

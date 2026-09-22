@@ -263,3 +263,20 @@ header {
   padding: 4px 12px; cursor: pointer; font-family: inherit; font-size: 12px;
 }
 #install-btn:hover { background: #128aa8; }
+
+#footer {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap;
+  padding-top: 8px; margin-top: 8px;
+  border-top: 1px solid #1c3a4a;
+  font-size: 11px; color: #4a6a7a;
+}
+#footer a {
+  color: #7fb5cc; text-decoration: none;
+  border-bottom: 1px dotted #2a4a5a;
+}
+#footer a:hover { color: #6fe3ff; border-bottom-color: #6fe3ff; }
+
+@media (max-width: 700px) {
+  #footer { font-size: 10px; padding-top: 6px; }
+}
